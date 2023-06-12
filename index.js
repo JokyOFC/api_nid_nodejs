@@ -1,5 +1,6 @@
 import express from "express"
 import jsonwebtoken from "jsonwebtoken"
+import { createEvento, getEventos, getEventoById, updateEvento, deleteEvento  } from "./src/controllers/eventos.js"
 import { user, PRIVATE_KEY, tokenValited } from './src/auth.js'
 import pkg from 'pg';
 const { Pool, Client } = pkg;
@@ -78,6 +79,12 @@ app.get('/private', (req, res) => {
         }
     }) 
 })
+
+app.get("/select/eventos", getEventos);
+app.get("/select/eventos/:id", getEventoById);
+app.post("/insert/eventos/", createEvento);
+app.put("/update/eventos/:id", updateEvento);
+app.delete("/delete/eventos/:id", deleteEvento);
 
 app.listen(port, async ()=> {
     

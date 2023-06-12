@@ -2,8 +2,8 @@ import jsonwebtoken from "jsonwebtoken"
 
 export const PRIVATE_KEY = '102030FFF'
 export const user = {
-    name: 'Filipe Sousa',
-    email: 'filipe@exmaple.com'
+    name: 'Admin',
+    email: 'Admin@exmaple.com'
 }
   
   export function tokenValited(
