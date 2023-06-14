@@ -68,6 +68,10 @@ app.get('/login', async (req, res) => {
 })
 
 app.use('*', tokenValited);
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+  });
 
 app.get('/private', (req, res) => {
     const { user } = req.headers
