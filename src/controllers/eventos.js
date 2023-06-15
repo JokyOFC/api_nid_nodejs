@@ -49,7 +49,7 @@ export const getEventos = (req, res) => {
 export const getEventoById = (request, response) => {
 
     const id = parseInt(request.params.id)
-    let query = 'SELECT * FROM eventos WHERE id = $1';
+    let query = 'SELECT * FROM eventos WHERE evento_nome = $1';
 
     try{
 
@@ -74,7 +74,7 @@ export const updateEvento = (request, response) => {
     const id = parseInt(request.params.id)
     const {data, horario, sala, status} = request.body
 
-    let query = 'UPDATE eventos SET evento_nome = $1, data = $2, horario = $3, sala = $4, status = $4 WHERE event_nome = $1'
+    let query = 'UPDATE eventos SET evento_nome = $1, data = $2, horario = $3, sala = $4, status = $4 WHERE evento_nome = $1'
 
     try {
 
@@ -100,7 +100,7 @@ export const deleteEvento = (request, response) => {
 
     const id = parseInt(request.params.id)
 
-    let query = 'DELETE FROM eventos WHERE eventos_nome = $1'
+    let query = 'DELETE FROM eventos WHERE evento_nome = $1'
 
     try {
 
