@@ -46,6 +46,20 @@ app.options('/login', (req, res) => {
     res.sendStatus(200);
 });
 
+app.options('/delete/eventos/:id', (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.sendStatus(200);
+});
+
+app.options('/delete/eventos/', (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.sendStatus(200);
+});
+
 app.get('/login', async (req, res) => {
     const [,hash] = req.headers.authorization?.split(' ') || [' ', ' '];
     const [email, password] = Buffer.from(hash, 'base64').toString().split(':');
