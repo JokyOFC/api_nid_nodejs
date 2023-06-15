@@ -110,6 +110,8 @@ export const deleteEvento = (request, response) => {
                 throw error
             }
 
+            console.log(id)
+
             return response.status(200).send(`Evento deleted with ID: ${id}`)
 
         })
