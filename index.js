@@ -39,7 +39,7 @@ app.get('/', (_, res) => res.status(200).json({
     message: "default route"
 }))
 
-app.get('/login', async (req, res) => {
+app.post('/login', async (req, res) => {
     const [,hash] = req.headers.authorization?.split(' ') || [' ', ' '];
     const [email, password] = Buffer.from(hash, 'base64').toString().split(':');
 
