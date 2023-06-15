@@ -70,6 +70,7 @@ app.get('/login', async (req, res) => {
 app.get("/select/eventos", getEventos);
 
 app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://nid.jokyofc.com');
     res.header('Access-Control-Allow-Origin', '*');
     next();
 });
