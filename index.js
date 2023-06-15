@@ -29,6 +29,12 @@ const pool = new Pool({
       },
 });
 
+app.use((req, res, next) => {
+    // res.setHeader('Access-Control-Allow-Origin', 'https://nid.jokyofc.com');
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+});
+
 app.get('/', (_, res) => res.status(200).json({
     message: "default route"
 }))
@@ -68,12 +74,6 @@ app.get('/login', async (req, res) => {
 })
 
 app.get("/select/eventos", getEventos);
-
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'https://nid.jokyofc.com');
-    res.header('Access-Control-Allow-Origin', '*');
-    next();
-});
 
 app.use('*', tokenValited);
 
