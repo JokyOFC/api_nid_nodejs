@@ -30,7 +30,7 @@ const pool = new Pool({
 });
 
 app.use((req, res, next) => {
-    // res.setHeader('Access-Control-Allow-Origin', 'https://nid.jokyofc.com');
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Origin', '*');
     next();
 });
