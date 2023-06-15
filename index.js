@@ -39,6 +39,13 @@ app.get('/', (_, res) => res.status(200).json({
     message: "default route"
 }))
 
+app.options('/login', (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.sendStatus(200);
+});
+
 app.get('/login', async (req, res) => {
     const [,hash] = req.headers.authorization?.split(' ') || [' ', ' '];
     const [email, password] = Buffer.from(hash, 'base64').toString().split(':');
