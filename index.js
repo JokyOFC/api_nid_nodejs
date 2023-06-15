@@ -15,7 +15,7 @@ const client = new Client({
     ssl: {
         rejectUnauthorized: false
       },
-  });
+});
 const port = process.env.PORT || 3000;
 
 const pool = new Pool({
@@ -69,11 +69,13 @@ app.get('/login', async (req, res) => {
 
 app.get("/select/eventos", getEventos);
 
-app.use('*', tokenValited);
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     next();
 });
+
+app.use('*', tokenValited);
+
 
 app.get('/private', (req, res) => {
     const { user } = req.headers
